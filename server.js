@@ -85,12 +85,28 @@ app.get("/animals/new", (req, res) => {
   res.render("new.ejs")
 })
 
+//Update route
+app.put("/animals/:id", async (req, res) => {
+  
+  req.body.readyToEat = req.body.readyToEat === "on" ? true : false
 
-//CREATE route
-app.post("/", async (req, res) => {
+  await Animal.findByIdAndUpdate(id, req.body, {new: true}, (err, fruit) => {
+  
+      res.redirect("/animals")
+  })
+})
+
+//Create route
+app.post("/animals", async (req, res) => {
   req.body.extinct = Boolean(req.body.extinct)
   await Animal.create(req.body)
   res.redirect("/animals")
+})
+
+//EDIT ROUTE - GET - Get the edit form
+app.get("animals/:id/edit", async (req, res) => {
+  const soda = await Animal.findById[req.params.id]
+  res.render("edit.ejs", {animals})
 })
 
 //Show route
@@ -102,3 +118,8 @@ app.get("/animals/:id", async (req, res) => {
 
 
 app.listen(PORT, () => console.log(`Server is listening to port: ${PORT}`))
+
+
+//I need an edit button, my update and edit routes to work, and to add a delete route.
+//Then I will add a public folder with style.css and do very minimal styling
+//Then I await refactoring
