@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <title>Animals App</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Animals App</h1>
+        <nav>
+            <a href="/animals/new"><button>Create a New Animal</button></a>
+        </nav>
+        <% for (animal of animals) { %>
+            <article>
+                <a href="/animals/<%= animal._id %>">
+                    <h2>
+                        <%= animal.name %>
+                    </h2>
+                </a>
+            </article>
+
+            <% } %>
+    </div>
+</body>
+
+</html>
