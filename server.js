@@ -85,6 +85,12 @@ app.get("/animals/new", (req, res) => {
   res.render("new.ejs")
 })
 
+//Destroy route
+app.delete("animals/:id", async (req, res) => {
+  await Animal.findByIdAndDelete(req.params.id)
+  res.redirect("/animals")
+})
+
 //Update route
 app.put("/animals/:id", async (req, res) => {
   

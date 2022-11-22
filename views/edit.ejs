@@ -16,7 +16,7 @@
 
             <h1>Create a New Animal</h1>
 
-            <form action="/animals/<%= fruit._id %>?_method=PUT" method="post">
+            <form action="/animals/<%= animal._id %>?_method=PUT" method="post">
                 Name: <input type="text" name="name" value="<%= animal.name %>"></br>
                 Is the animal extinct? <input type="checkbox" <%=animal.extinct ? "checked"
                 : "" %>></br>
