@@ -86,20 +86,17 @@ app.get("/animals/new", (req, res) => {
 })
 
 //Destroy route
-app.delete("animals/:id", async (req, res) => {
+app.delete("/animals/:id", async (req, res) => {
   await Animal.findByIdAndDelete(req.params.id)
   res.redirect("/animals")
 })
 
 //Update route
 app.put("/animals/:id", async (req, res) => {
-  
-  req.body.readyToEat = req.body.readyToEat === "on" ? true : false
-
-  await Animal.findByIdAndUpdate(id, req.body, {new: true}, (err, fruit) => {
-  
-      res.redirect("/animals")
-  })
+  console.log(req.body)
+  req.body.extinct = Boolean(req.body.extinct)
+  await Animal.findByIdAndUpdate(req.params.id, req.body)
+  res.redirect("/animals")
 })
 
 //Create route
@@ -109,15 +106,18 @@ app.post("/animals", async (req, res) => {
   res.redirect("/animals")
 })
 
-//EDIT ROUTE - GET - Get the edit form
-app.get("animals/:id/edit", async (req, res) => {
-  const soda = await Animal.findById[req.params.id]
-  res.render("edit.ejs", {animals})
+//Edit route
+app.get("/animals/:id/edit", async (req, res) => {
+  
+  req.body.extinct = Boolean(req.body.extinct)
+  const animal = await Animal.findById(req.params.id)
+  res.render("edit.ejs", { animal })
 })
 
 //Show route
 app.get("/animals/:id", async (req, res) => {
   const animal = await Animal.findById(req.params.id)
+  console.log(animal)
   res.render("show.ejs", { animal })
 })
 
@@ -127,5 +127,5 @@ app.listen(PORT, () => console.log(`Server is listening to port: ${PORT}`))
 
 
 //I need an edit button, my update and edit routes to work, and to add a delete route.
-//Then I will add a public folder with style.css and do very minimal styling
-//Then I await refactoring
+//Then I will add a public folder with style.css and do very minimal styling.
+//Then I await refactoring.

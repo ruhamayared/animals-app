@@ -14,18 +14,18 @@
     <main>
         <div class="container">
 
-            <h1>Create a New Animal</h1>
+            <h1>Update <%= animal.name %>
+            </h1>
 
             <form action="/animals/<%= animal._id %>?_method=PUT" method="post">
                 Name: <input type="text" name="name" value="<%= animal.name %>"></br>
-                Is the animal extinct? <input type="checkbox" <%=animal.extinct ? "checked"
-                : "" %>></br>
+                Is the animal extinct? <input type="checkbox" name="extinct" <%=animal.extinct ? "checked" : "" %>></br>
                 Image: <input type="text" name="image" value="<%= animal.image %>"></br>
                 Species: <input type="text" name="species" value="<%= animal.species %>"></br>
                 Location: <input type="text" name="location" value="<%= animal.location %>"></br>
                 Life Expectancy: <input type="number" name="lifeExpectancy" value="<%= animal.lifeExpectancy %>"></br>
 
-                <input type="submit" value="Create an New Animal">
+                <input type="submit" value="Update <%= animal.name %>">
             </form>
 
         </div>
