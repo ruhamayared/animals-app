@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/static/styles.css">
     <title>Animals App</title>
 </head>
 
@@ -16,20 +17,26 @@
         <nav>
             <a href="/animals/new"><button>Create a New Animal</button></a>
         </nav>
-        <% for (animal of animals) { %>
-            <article>
-                <a href="/animals/<%= animal._id %>">
-                    <h2>
-                        <%= animal.name %>
-                    </h2>
-                </a>
-                <a href="/animals/<%= animal._id %>/edit"><button>Edit</button></a>
-                <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" />
-                  </form>
-            </article>
+        <div class="animals">
+            <% for (animal of animals) { %>
+                <div class="cards">
+                    <article>
+                        <a href="/animals/<%= animal._id %>">
+                            <h2>
+                                <%= animal.name %>
+                            </h2>
+                        </a>
+                        <div class="buttons">
+                            <a href="/animals/<%= animal._id %>/edit"><button>Edit</button></a>
+                            <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </div>
+                    </article>
+                </div>
 
-            <% } %>
+                <% } %>
+        </div>
     </div>
 </body>
 

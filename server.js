@@ -45,7 +45,8 @@ const Animal = model("Animal", animalsSchema)
 app.use(morgan("tiny"))
 app.use(methodOverride("_method"))
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static("public"))
+// app.use(express.static("public"))
+app.use("/static", express.static("public"))
 
 //Routes
 app.get('/', (req, res) => {
