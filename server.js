@@ -127,6 +127,4 @@ app.get("/animals/:id", async (req, res) => {
 app.listen(PORT, () => console.log(`Server is listening to port: ${PORT}`))
 
 
-//I need an edit button, my update and edit routes to work, and to add a delete route.
-//Then I will add a public folder with style.css and do very minimal styling.
-//Then I await refactoring.
+
